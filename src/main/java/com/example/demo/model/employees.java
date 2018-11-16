@@ -1,5 +1,8 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import java.util.Date;
 
 public class employees {
@@ -10,6 +13,12 @@ public class employees {
     private String last_name;
     private String gender;
     private Date hire_date;
+   // private Date createdDate = new Date();
+
+
+
+//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd@HH:mm:ss.SSSZ")
+//    private Date createdDate ;
 
     public employees() {
     }
@@ -31,6 +40,7 @@ public class employees {
         this.emp_no = emp_no;
     }
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd" , locale = "en_GB")
     public Date getBirth_date() {
         return birth_date;
     }
@@ -63,11 +73,33 @@ public class employees {
         this.gender = gender;
     }
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", locale = "en_GB")
     public Date getHire_date() {
         return hire_date;
     }
 
     public void setHire_date(Date hire_date) {
         this.hire_date = hire_date;
+    }
+
+//    public Date getCreatedDate() {
+//        return createdDate;
+//    }
+//
+//    public void setCreatedDate(Date createdDate) {
+//        this.createdDate = createdDate;
+//    }
+
+
+    @Override
+    public String toString() {
+        return "employees{" +
+                "emp_no=" + emp_no +
+                ", birth_date=" + birth_date +
+                ", first_name='" + first_name + '\'' +
+                ", last_name='" + last_name + '\'' +
+                ", gender='" + gender + '\'' +
+                ", hire_date=" + hire_date +
+                '}';
     }
 }
